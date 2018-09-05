@@ -1,7 +1,0 @@
-#!/bin/bash
-
-cat images-selected1.txt|while read filename
-do
-  echo "Process: "$filename
-  bin/app_perona_malik -i $filename -show 2 -delta 1 -it 100
-done

@@ -135,15 +135,23 @@ void WatershedSegmentation(CImg<unsigned char> &img, CImg<signed int> *labels, b
         const int w = img.width() -1;
         const int h = img.height()-1;
 
-        if (pt.getX() > 0)                  iExpand(pt.getX()-1, pt.getY(),   g, lab, img, labels, &frontier2);
-        if (pt.getX() < w)                  iExpand(pt.getX()+1, pt.getY(),   g, lab, img, labels, &frontier2);
-        if (pt.getY() > 0)                  iExpand(pt.getX(),   pt.getY()-1, g, lab, img, labels, &frontier2);
-        if (pt.getY() < h)                  iExpand(pt.getX(),   pt.getY()+1, g, lab, img, labels, &frontier2);
+        if (pt.getX() > 0)
+            iExpand(pt.getX()-1, pt.getY(),   g, lab, img, labels, &frontier2);
+        if (pt.getX() < w)
+            iExpand(pt.getX()+1, pt.getY(),   g, lab, img, labels, &frontier2);
+        if (pt.getY() > 0)
+            iExpand(pt.getX(),   pt.getY()-1, g, lab, img, labels, &frontier2);
+        if (pt.getY() < h)
+            iExpand(pt.getX(),   pt.getY()+1, g, lab, img, labels, &frontier2);
 
-        if (pt.getX() > 0 && pt.getY() > 0) iExpand(pt.getX()-1, pt.getY()-1, g, lab, img, labels, &frontier2);
-        if (pt.getX() < w && pt.getY() < h) iExpand(pt.getX()+1, pt.getY()+1, g, lab, img, labels, &frontier2);
-        if (pt.getX() > 0 && pt.getY() < h) iExpand(pt.getX()-1, pt.getY()+1, g, lab, img, labels, &frontier2);
-        if (pt.getX() < w && pt.getY() > 0) iExpand(pt.getX()+1, pt.getY()-1, g, lab, img, labels, &frontier2);
+        if (pt.getX() > 0 && pt.getY() > 0)
+            iExpand(pt.getX()-1, pt.getY()-1, g, lab, img, labels, &frontier2);
+        if (pt.getX() < w && pt.getY() < h)
+            iExpand(pt.getX()+1, pt.getY()+1, g, lab, img, labels, &frontier2);
+        if (pt.getX() > 0 && pt.getY() < h)
+            iExpand(pt.getX()-1, pt.getY()+1, g, lab, img, labels, &frontier2);
+        if (pt.getX() < w && pt.getY() > 0)
+            iExpand(pt.getX()+1, pt.getY()-1, g, lab, img, labels, &frontier2);
       }
       frontier = frontier2;
       frontier2.clear();
